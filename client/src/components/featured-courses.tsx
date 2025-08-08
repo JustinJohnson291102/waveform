@@ -1,11 +1,22 @@
-import { useState } from "react";
+import { useState, useRef } from "react";
 import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
-import { Star, Heart, Clock, ArrowRight } from "lucide-react";
+import { Star, Heart, Clock, ArrowRight, ChevronLeft, ChevronRight } from "lucide-react";
 
 export default function FeaturedCourses() {
   const [activeCategory, setActiveCategory] = useState("all");
+  const carouselRef = useRef<HTMLDivElement>(null);
+
+  const scrollCarousel = (direction: 'left' | 'right') => {
+    if (carouselRef.current) {
+      const scrollAmount = 350;
+      carouselRef.current.scrollBy({
+        left: direction === 'left' ? -scrollAmount : scrollAmount,
+        behavior: 'smooth'
+      });
+    }
+  };
 
   const categories = [
     { id: "all", name: "All Courses" },
@@ -151,60 +162,87 @@ export default function FeaturedCourses() {
           ))}
         </div>
 
-        {/* Courses Grid */}
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8">
-          {filteredCourses.map((course) => (
-            <Card
-              key={course.id}
-              className="bg-white rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-500 hover:-translate-y-2 animate-on-scroll overflow-hidden group"
+        {/* Courses Carousel */}
+        <div className="relative">
+          <div className="overflow-hidden">
+            <div
+              ref={carouselRef}
+              className="flex space-x-6 carousel-container animate-on-scroll"
+              style={{ scrollSnapType: 'x mandatory' }}
             >
-              <div className="relative">
-                <img
-                  src={course.image}
-                  alt={course.title}
-                  className="w-full h-48 object-cover"
-                />
-                <Badge className={`absolute top-4 left-4 ${course.badgeColor} text-white`}>
-                  {course.badge}
-                </Badge>
-                <div className="absolute top-4 right-4 bg-white/90 backdrop-blur-sm rounded-full p-2 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                  <Heart className="w-4 h-4 text-gray-400 hover:text-red-500 cursor-pointer transition-colors duration-300" />
-                </div>
-              </div>
-              <CardContent className="p-6">
-                <div className="flex items-center justify-between mb-3">
-                  <div className="flex items-center space-x-1 text-yellow-400">
-                    {Array.from({ length: 5 }).map((_, i) => (
-                      <Star key={i} className="w-4 h-4 fill-current" />
-                    ))}
-                    <span className="text-gray-600 text-sm ml-2">({course.rating})</span>
+              {filteredCourses.slice(0, 8).map((course) => (
+                <Card
+                  key={course.id}
+                  className="flex-shrink-0 w-80 bg-white rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-500 hover:-translate-y-2 overflow-hidden group"
+                  style={{ scrollSnapAlign: 'start' }}
+                >
+                  <div className="relative">
+                    <img
+                      src={course.image}
+                      alt={course.title}
+                      className="w-full h-48 object-cover"
+                    />
+                    <Badge className={`absolute top-4 left-4 ${course.badgeColor} text-white`}>
+                      {course.badge}
+                    </Badge>
+                    <div className="absolute top-4 right-4 bg-white/90 backdrop-blur-sm rounded-full p-2 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                      <Heart className="w-4 h-4 text-gray-400 hover:text-red-500 cursor-pointer transition-colors duration-300" />
+                    </div>
                   </div>
-                  <div className="flex items-center space-x-1 text-gray-500 text-sm">
-                    <Clock className="w-4 h-4" />
-                    <span>{course.lessons} lessons</span>
-                  </div>
-                </div>
-                <h3 className="text-lg font-bold text-gray-800 mb-3 hover:text-blue-600 transition-colors duration-300 cursor-pointer line-clamp-2">
-                  {course.title}
-                </h3>
-                <div className="flex items-center justify-between">
-                  <div className="flex items-center space-x-2">
-                    {course.originalPrice && (
-                      <span className="text-lg text-gray-400 line-through">
-                        ₹{course.originalPrice.toLocaleString()}
-                      </span>
-                    )}
-                    <span className="text-2xl font-bold text-blue-600">
-                      ₹{course.price.toLocaleString()}
-                    </span>
-                  </div>
-                  <Button className="bg-blue-600/10 hover:bg-blue-600 hover:text-white text-blue-600 transition-all duration-300">
-                    Enroll Now
-                  </Button>
-                </div>
-              </CardContent>
-            </Card>
-          ))}
+                  <CardContent className="p-6">
+                    <div className="flex items-center justify-between mb-3">
+                      <div className="flex items-center space-x-1 text-yellow-400">
+                        {Array.from({ length: 5 }).map((_, i) => (
+                          <Star key={i} className="w-4 h-4 fill-current" />
+                        ))}
+                        <span className="text-gray-600 text-sm ml-2">({course.rating})</span>
+                      </div>
+                      <div className="flex items-center space-x-1 text-gray-500 text-sm">
+                        <Clock className="w-4 h-4" />
+                        <span>{course.lessons} lessons</span>
+                      </div>
+                    </div>
+                    <h3 className="text-lg font-bold text-gray-800 mb-3 hover:text-blue-600 transition-colors duration-300 cursor-pointer line-clamp-2">
+                      {course.title}
+                    </h3>
+                    <div className="flex items-center justify-between">
+                      <div className="flex items-center space-x-2">
+                        {course.originalPrice && (
+                          <span className="text-lg text-gray-400 line-through">
+                            ₹{course.originalPrice.toLocaleString()}
+                          </span>
+                        )}
+                        <span className="text-2xl font-bold text-blue-600">
+                          ₹{course.price.toLocaleString()}
+                        </span>
+                      </div>
+                      <Button className="bg-blue-600/10 hover:bg-blue-600 hover:text-white text-blue-600 transition-all duration-300">
+                        Enroll Now
+                      </Button>
+                    </div>
+                  </CardContent>
+                </Card>
+              ))}
+            </div>
+          </div>
+
+          {/* Carousel Controls */}
+          <Button
+            variant="outline"
+            size="icon"
+            className="absolute left-4 top-1/2 transform -translate-y-1/2 bg-white hover:bg-blue-600 hover:text-white w-12 h-12 rounded-full shadow-lg transition-all duration-300"
+            onClick={() => scrollCarousel('left')}
+          >
+            <ChevronLeft className="w-5 h-5" />
+          </Button>
+          <Button
+            variant="outline"
+            size="icon"
+            className="absolute right-4 top-1/2 transform -translate-y-1/2 bg-white hover:bg-blue-600 hover:text-white w-12 h-12 rounded-full shadow-lg transition-all duration-300"
+            onClick={() => scrollCarousel('right')}
+          >
+            <ChevronRight className="w-5 h-5" />
+          </Button>
         </div>
 
         <div className="text-center mt-12 animate-on-scroll">
