@@ -43,54 +43,62 @@ export default function Navigation() {
 
           {/* Desktop Navigation */}
           <div className="hidden lg:flex items-center space-x-8">
-            <a href="#" className="text-gray-600 hover:text-blue-600 transition-colors duration-300 font-medium">
+            <a href="/" className="text-gray-600 hover:text-blue-600 transition-colors duration-300 font-medium">
               Home
             </a>
             
             {/* Packages Dropdown */}
-            <DropdownMenu>
-              <DropdownMenuTrigger asChild>
-                <button className="flex items-center space-x-1 text-gray-600 hover:text-blue-600 transition-colors duration-300 font-medium">
-                  <span>Packages</span>
-                  <ChevronDown className="w-4 h-4" />
-                </button>
-              </DropdownMenuTrigger>
-              <DropdownMenuContent className="w-48 bg-white shadow-lg border border-gray-200">
-                {packages.map((pkg) => (
-                  <DropdownMenuItem key={pkg.name} className="hover:bg-gray-50">
-                    <a href={pkg.href} className="flex items-center w-full px-2 py-1 text-gray-700 hover:text-blue-600">
+            <div className="relative group">
+              <button className="flex items-center space-x-1 text-gray-600 hover:text-blue-600 transition-colors duration-300 font-medium">
+                <span>Packages</span>
+                <ChevronDown className="w-4 h-4" />
+              </button>
+              <div className="absolute left-0 mt-1 w-48 bg-white rounded-lg shadow-lg border border-gray-200 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 z-50">
+                <div className="py-2">
+                  {packages.map((pkg) => (
+                    <a
+                      key={pkg.name}
+                      href="/packages"
+                      className="block px-4 py-2 text-gray-700 hover:text-blue-600 hover:bg-gray-50 transition-colors duration-200"
+                    >
                       {pkg.name}
                     </a>
-                  </DropdownMenuItem>
-                ))}
-              </DropdownMenuContent>
-            </DropdownMenu>
+                  ))}
+                </div>
+              </div>
+            </div>
 
             {/* Courses Dropdown */}
-            <DropdownMenu>
-              <DropdownMenuTrigger asChild>
-                <button className="flex items-center space-x-1 text-gray-600 hover:text-blue-600 transition-colors duration-300 font-medium">
-                  <span>Courses</span>
-                  <ChevronDown className="w-4 h-4" />
-                </button>
-              </DropdownMenuTrigger>
-              <DropdownMenuContent className="w-64 bg-white shadow-lg border border-gray-200">
-                {courseCategories.map((category) => (
-                  <DropdownMenuItem key={category.name} className="hover:bg-gray-50">
-                    <a href={category.href} className="flex items-center w-full px-2 py-1 text-gray-700 hover:text-blue-600">
+            <div className="relative group">
+              <button className="flex items-center space-x-1 text-gray-600 hover:text-blue-600 transition-colors duration-300 font-medium">
+                <span>Courses</span>
+                <ChevronDown className="w-4 h-4" />
+              </button>
+              <div className="absolute left-0 mt-1 w-64 bg-white rounded-lg shadow-lg border border-gray-200 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 z-50">
+                <div className="py-2">
+                  {courseCategories.map((category) => (
+                    <a
+                      key={category.name}
+                      href="/courses"
+                      className="flex items-center px-4 py-2 text-gray-700 hover:text-blue-600 hover:bg-gray-50 transition-colors duration-200"
+                    >
                       <span className="mr-3 text-lg">{category.icon}</span>
                       <span>{category.name}</span>
                     </a>
-                  </DropdownMenuItem>
-                ))}
-              </DropdownMenuContent>
-            </DropdownMenu>
+                  ))}
+                </div>
+              </div>
+            </div>
 
-            <a href="#about" className="text-gray-600 hover:text-blue-600 transition-colors duration-300 font-medium">
+            <a href="/about" className="text-gray-600 hover:text-blue-600 transition-colors duration-300 font-medium">
               About Us
             </a>
 
-            <a href="#contact" className="text-gray-600 hover:text-blue-600 transition-colors duration-300 font-medium">
+            <a href="/instructors" className="text-gray-600 hover:text-blue-600 transition-colors duration-300 font-medium">
+              Instructors
+            </a>
+
+            <a href="/contact" className="text-gray-600 hover:text-blue-600 transition-colors duration-300 font-medium">
               Contact Us
             </a>
           </div>
@@ -114,48 +122,31 @@ export default function Navigation() {
               <SheetContent side="right" className="w-[300px] sm:w-[400px]">
                 <div className="flex flex-col space-y-6 mt-6">
                   <a
-                    href="#"
+                    href="/"
                     className="text-gray-600 hover:text-blue-600 transition-colors duration-300 px-3 py-2"
                     onClick={() => setMobileMenuOpen(false)}
                   >
                     Home
                   </a>
 
-                  <div>
-                    <h3 className="font-semibold text-lg mb-3">Packages</h3>
-                    <div className="space-y-2">
-                      {packages.map((pkg) => (
-                        <a
-                          key={pkg.name}
-                          href={pkg.href}
-                          className="flex items-center px-3 py-2 text-gray-600 hover:text-blue-600 hover:bg-gray-50 transition-colors duration-200 rounded-lg"
-                          onClick={() => setMobileMenuOpen(false)}
-                        >
-                          <span>{pkg.name}</span>
-                        </a>
-                      ))}
-                    </div>
-                  </div>
-
-                  <div>
-                    <h3 className="font-semibold text-lg mb-3">Courses</h3>
-                    <div className="space-y-2">
-                      {courseCategories.map((category) => (
-                        <a
-                          key={category.name}
-                          href={category.href}
-                          className="flex items-center px-3 py-2 text-gray-600 hover:text-blue-600 hover:bg-gray-50 transition-colors duration-200 rounded-lg"
-                          onClick={() => setMobileMenuOpen(false)}
-                        >
-                          <span className="mr-3">{category.icon}</span>
-                          <span>{category.name}</span>
-                        </a>
-                      ))}
-                    </div>
-                  </div>
+                  <a
+                    href="/packages"
+                    className="text-gray-600 hover:text-blue-600 transition-colors duration-300 px-3 py-2"
+                    onClick={() => setMobileMenuOpen(false)}
+                  >
+                    Packages
+                  </a>
 
                   <a
-                    href="#about"
+                    href="/courses"
+                    className="text-gray-600 hover:text-blue-600 transition-colors duration-300 px-3 py-2"
+                    onClick={() => setMobileMenuOpen(false)}
+                  >
+                    Courses
+                  </a>
+
+                  <a
+                    href="/about"
                     className="text-gray-600 hover:text-blue-600 transition-colors duration-300 px-3 py-2"
                     onClick={() => setMobileMenuOpen(false)}
                   >
@@ -163,7 +154,15 @@ export default function Navigation() {
                   </a>
 
                   <a
-                    href="#contact"
+                    href="/instructors"
+                    className="text-gray-600 hover:text-blue-600 transition-colors duration-300 px-3 py-2"
+                    onClick={() => setMobileMenuOpen(false)}
+                  >
+                    Instructors
+                  </a>
+
+                  <a
+                    href="/contact"
                     className="text-gray-600 hover:text-blue-600 transition-colors duration-300 px-3 py-2"
                     onClick={() => setMobileMenuOpen(false)}
                   >
