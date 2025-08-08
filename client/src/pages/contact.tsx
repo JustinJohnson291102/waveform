@@ -326,7 +326,7 @@ export default function Contact() {
         </div>
       </section>
 
-      {/* Office Locations */}
+      {/* Office Locations with Map */}
       <section className="py-20 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="animate-on-scroll opacity-0 translate-y-8 transition-all duration-1000 ease-out text-center mb-16">
@@ -336,6 +336,59 @@ export default function Contact() {
             </p>
           </div>
 
+          {/* Map Section */}
+          <div className="animate-on-scroll opacity-0 translate-y-8 transition-all duration-1000 ease-out mb-16">
+            <Card className="border-0 shadow-xl overflow-hidden">
+              <CardContent className="p-0">
+                <div className="h-96 bg-gradient-to-br from-blue-50 to-cyan-50 flex items-center justify-center relative">
+                  {/* SVG Map Illustration */}
+                  <svg
+                    width="600"
+                    height="400"
+                    viewBox="0 0 600 400"
+                    className="w-full h-full max-w-2xl"
+                  >
+                    {/* Background */}
+                    <rect width="600" height="400" fill="#f0f9ff" />
+                    
+                    {/* India outline (simplified) */}
+                    <path
+                      d="M150 80 L480 80 L480 320 L150 320 Z M200 120 L420 120 L420 280 L200 280 Z"
+                      fill="#e0e7ff"
+                      stroke="#3b82f6"
+                      strokeWidth="2"
+                    />
+                    
+                    {/* Location markers */}
+                    {/* Bangalore */}
+                    <circle cx="350" cy="250" r="8" fill="#ef4444" />
+                    <text x="365" y="255" fontSize="14" fill="#1f2937" fontWeight="bold">Bangalore (HQ)</text>
+                    
+                    {/* Mumbai */}
+                    <circle cx="280" cy="200" r="6" fill="#3b82f6" />
+                    <text x="295" y="205" fontSize="12" fill="#1f2937">Mumbai</text>
+                    
+                    {/* Delhi */}
+                    <circle cx="320" cy="140" r="6" fill="#3b82f6" />
+                    <text x="335" y="145" fontSize="12" fill="#1f2937">Delhi</text>
+                    
+                    {/* Decorative elements */}
+                    <circle cx="100" cy="100" r="20" fill="#dbeafe" opacity="0.6" />
+                    <circle cx="500" cy="320" r="15" fill="#dbeafe" opacity="0.4" />
+                    
+                    {/* Title */}
+                    <text x="300" y="40" fontSize="20" fontWeight="bold" textAnchor="middle" fill="#1f2937">
+                      Knowledge Wave India - Office Locations
+                    </text>
+                  </svg>
+                  
+                  {/* Interactive overlay */}
+                  <div className="absolute inset-0 bg-gradient-to-t from-white/20 to-transparent pointer-events-none"></div>
+                </div>
+              </CardContent>
+            </Card>
+          </div>
+
           <div className="grid md:grid-cols-3 gap-8">
             {[
               {
@@ -343,21 +396,24 @@ export default function Contact() {
                 address: "Tech Park, Electronic City",
                 postal: "Karnataka 560100",
                 phone: "+91 80 1234 5678",
-                type: "Headquarters"
+                type: "Headquarters",
+                color: "bg-red-100 text-red-800"
               },
               {
                 city: "Mumbai",
                 address: "Business District, Bandra East",
                 postal: "Maharashtra 400051",
                 phone: "+91 22 1234 5678",
-                type: "Regional Office"
+                type: "Regional Office",
+                color: "bg-blue-100 text-blue-800"
               },
               {
                 city: "Delhi",
                 address: "Cyber Hub, Gurgaon",
                 postal: "Haryana 122002",
                 phone: "+91 11 1234 5678",
-                type: "Branch Office"
+                type: "Branch Office",
+                color: "bg-blue-100 text-blue-800"
               }
             ].map((location, index) => (
               <Card
@@ -367,7 +423,7 @@ export default function Contact() {
               >
                 <CardContent className="p-6">
                   <div className="text-center mb-4">
-                    <Badge className="mb-2 bg-blue-100 text-blue-800">
+                    <Badge className={`mb-2 ${location.color}`}>
                       {location.type}
                     </Badge>
                     <h3 className="text-xl font-bold text-gray-900">{location.city}</h3>
