@@ -1,0 +1,1488 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Knowledge Wave India - Professional Learning Platform</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        'inter': ['Inter', 'sans-serif'],
+                    },
+                    colors: {
+                        primary: '#2563eb',
+                        secondary: '#64748b',
+                        accent: '#06b6d4',
+                    },
+                    animation: {
+                        'fade-in': 'fadeIn 0.8s ease-in-out',
+                        'slide-up': 'slideUp 0.6s ease-out',
+                        'bounce-gentle': 'bounceGentle 2s infinite',
+                    }
+                }
+            }
+        };
+    </script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        @keyframes slideUp {
+            from { opacity: 0; transform: translateY(40px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        @keyframes bounceGentle {
+            0%, 20%, 50%, 80%, 100% { transform: translateY(0); }
+            40% { transform: translateY(-5px); }
+            60% { transform: translateY(-3px); }
+        }
+        .animate-on-scroll {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.8s ease-out;
+        }
+        .animate-on-scroll.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        .carousel-container {
+            scroll-behavior: smooth;
+        }
+    </style>
+</head>
+<body class="font-inter bg-gray-50">
+
+    <!-- @COMPONENT: NavigationHeader -->
+    <!-- Navigation Header -->
+    <nav class="bg-white shadow-lg sticky top-0 z-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center py-4">
+                <div class="flex items-center space-x-3">
+                    <div class="w-10 h-10 bg-gradient-to-br from-primary to-accent rounded-lg flex items-center justify-center">
+                        <i class="fas fa-wave-square text-white text-xl"></i>
+                    </div>
+                    <span class="text-2xl font-bold text-gray-800">Knowledge<span class="text-primary">Wave</span></span>
+                </div>
+                
+                <!-- Desktop Navigation -->
+                <div class="hidden lg:flex items-center space-x-8">
+                    <div class="relative group">
+                        <button class="text-gray-600 hover:text-primary flex items-center space-x-1 transition-colors duration-300">
+                            <span>Courses</span>
+                            <i class="fas fa-chevron-down text-xs group-hover:rotate-180 transition-transform duration-300"></i>
+                        </button>
+                        <!-- @FUNCTIONALITY: Dropdown menu for course categories -->
+                        <div class="absolute top-full left-0 mt-2 w-64 bg-white rounded-xl shadow-xl opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 z-50">
+                            <div class="py-4">
+                                <a href="#" class="flex items-center px-4 py-3 text-gray-600 hover:text-primary hover:bg-gray-50 transition-colors duration-200">
+                                    <i class="fas fa-code mr-3 text-primary"></i>
+                                    <span>Tech Courses</span>
+                                </a>
+                                <a href="#" class="flex items-center px-4 py-3 text-gray-600 hover:text-primary hover:bg-gray-50 transition-colors duration-200">
+                                    <i class="fas fa-chart-line mr-3 text-primary"></i>
+                                    <span>Business & Marketing</span>
+                                </a>
+                                <a href="#" class="flex items-center px-4 py-3 text-gray-600 hover:text-primary hover:bg-gray-50 transition-colors duration-200">
+                                    <i class="fas fa-palette mr-3 text-primary"></i>
+                                    <span>Creative Arts</span>
+                                </a>
+                                <a href="#" class="flex items-center px-4 py-3 text-gray-600 hover:text-primary hover:bg-gray-50 transition-colors duration-200">
+                                    <i class="fas fa-user-tie mr-3 text-primary"></i>
+                                    <span>Personal Development</span>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                    <a href="#packages" class="text-gray-600 hover:text-primary transition-colors duration-300">Packages</a>
+                    <a href="#instructors" class="text-gray-600 hover:text-primary transition-colors duration-300">Instructors</a>
+                    <a href="#about" class="text-gray-600 hover:text-primary transition-colors duration-300">About</a>
+                    <a href="#contact" class="text-gray-600 hover:text-primary transition-colors duration-300">Contact</a>
+                </div>
+
+                <!-- CTA Button -->
+                <div class="flex items-center space-x-4">
+                    <a href="#packages" class="bg-primary hover:bg-blue-700 text-white px-6 py-3 rounded-lg font-semibold transition-all duration-300 hover:scale-105 shadow-lg">
+                        Enroll Now
+                    </a>
+                    <button class="lg:hidden text-gray-600" data-event="click:toggleMobileMenu">
+                        <i class="fas fa-bars text-xl"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </nav>
+    <!-- @END_COMPONENT: NavigationHeader -->
+
+    <!-- @COMPONENT: HeroSection -->
+    <!-- Hero Section -->
+    <section class="relative bg-gradient-to-br from-gray-50 to-blue-50 py-20 overflow-hidden">
+        <!-- Background Elements -->
+        <div class="absolute inset-0">
+            <div class="absolute top-10 left-10 w-20 h-20 bg-primary/10 rounded-full animate-bounce-gentle"></div>
+            <div class="absolute top-40 right-20 w-16 h-16 bg-accent/10 rounded-full animate-bounce-gentle" style="animation-delay: 1s;"></div>
+            <div class="absolute bottom-20 left-1/4 w-12 h-12 bg-primary/5 rounded-full animate-bounce-gentle" style="animation-delay: 2s;"></div>
+        </div>
+
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative">
+            <div class="grid lg:grid-cols-2 gap-12 items-center">
+                <div class="animate-fade-in">
+                    <div class="mb-6">
+                        <span class="inline-block px-4 py-2 bg-primary/10 text-primary rounded-full text-sm font-semibold">
+                            🚀 Professional Learning Platform
+                        </span>
+                    </div>
+                    <h1 class="text-5xl lg:text-6xl font-bold text-gray-800 leading-tight mb-6">
+                        Never Stop
+                        <span class="text-primary block">Learning</span>
+                        <span class="text-secondary">Life Never Stop</span>
+                        <span class="text-accent">Teaching</span>
+                    </h1>
+                    <p class="text-xl text-gray-600 mb-8 leading-relaxed">
+                        Every teaching and learning journey is unique. We'll help guide your way with world-class instructors and comprehensive courses designed for professional excellence.
+                    </p>
+                    <div class="flex flex-col sm:flex-row gap-4">
+                        <a href="#packages" class="bg-primary hover:bg-blue-700 text-white px-8 py-4 rounded-xl font-semibold text-lg transition-all duration-300 hover:scale-105 shadow-xl flex items-center justify-center space-x-2">
+                            <span>Start Learning Today</span>
+                            <i class="fas fa-arrow-right"></i>
+                        </a>
+                        <a href="#about" class="border-2 border-primary text-primary hover:bg-primary hover:text-white px-8 py-4 rounded-xl font-semibold text-lg transition-all duration-300 flex items-center justify-center space-x-2">
+                            <i class="fas fa-play-circle"></i>
+                            <span>Watch Demo</span>
+                        </a>
+                    </div>
+
+                    <!-- Feature Tags -->
+                    <div class="mt-12 flex flex-wrap gap-4">
+                        <div class="flex items-center space-x-2 bg-white px-4 py-2 rounded-lg shadow-sm">
+                            <i class="fas fa-users text-primary"></i>
+                            <span class="text-gray-600">Tech Wave</span>
+                        </div>
+                        <div class="flex items-center space-x-2 bg-white px-4 py-2 rounded-lg shadow-sm">
+                            <i class="fas fa-palette text-accent"></i>
+                            <span class="text-gray-600">Creator Wave</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="relative animate-fade-in" style="animation-delay: 0.3s;">
+                    <!-- Professional business team in modern office environment -->
+                    <img src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=800&h=600" 
+                         alt="Professional business team collaborating in modern office" 
+                         class="rounded-2xl shadow-2xl w-full h-auto" />
+                    
+                    <!-- Floating Stats Cards -->
+                    <div class="absolute -bottom-6 -left-6 bg-white rounded-xl p-4 shadow-xl animate-bounce-gentle">
+                        <div class="text-center">
+                            <div class="text-2xl font-bold text-primary">80K+</div>
+                            <div class="text-sm text-gray-600">Students</div>
+                        </div>
+                    </div>
+                    
+                    <div class="absolute -top-6 -right-6 bg-white rounded-xl p-4 shadow-xl animate-bounce-gentle" style="animation-delay: 1s;">
+                        <div class="text-center">
+                            <div class="text-2xl font-bold text-accent">80+</div>
+                            <div class="text-sm text-gray-600">Courses</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- @END_COMPONENT: HeroSection -->
+
+    <!-- @COMPONENT: BrandPartners -->
+    <!-- Brand Partners Carousel -->
+    <section class="py-12 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-8">
+                <h3 class="text-2xl font-semibold text-gray-800 mb-4">Trusted by Leading Organizations</h3>
+            </div>
+            
+            <!-- Carousel Container -->
+            <div class="relative overflow-hidden">
+                <div class="carousel-container flex items-center justify-center space-x-12 animate-slide" id="brandCarousel">
+                    <!-- Microsoft logo placeholder -->
+                    <div class="flex-shrink-0 w-32 h-16 bg-gray-100 rounded-lg flex items-center justify-center group hover:shadow-lg transition-all duration-300">
+                        <i class="fab fa-microsoft text-3xl text-gray-400 group-hover:text-primary transition-colors duration-300"></i>
+                    </div>
+                    <!-- Google logo placeholder -->
+                    <div class="flex-shrink-0 w-32 h-16 bg-gray-100 rounded-lg flex items-center justify-center group hover:shadow-lg transition-all duration-300">
+                        <i class="fab fa-google text-3xl text-gray-400 group-hover:text-primary transition-colors duration-300"></i>
+                    </div>
+                    <!-- Amazon logo placeholder -->
+                    <div class="flex-shrink-0 w-32 h-16 bg-gray-100 rounded-lg flex items-center justify-center group hover:shadow-lg transition-all duration-300">
+                        <i class="fab fa-amazon text-3xl text-gray-400 group-hover:text-primary transition-colors duration-300"></i>
+                    </div>
+                    <!-- Apple logo placeholder -->
+                    <div class="flex-shrink-0 w-32 h-16 bg-gray-100 rounded-lg flex items-center justify-center group hover:shadow-lg transition-all duration-300">
+                        <i class="fab fa-apple text-3xl text-gray-400 group-hover:text-primary transition-colors duration-300"></i>
+                    </div>
+                    <!-- Meta logo placeholder -->
+                    <div class="flex-shrink-0 w-32 h-16 bg-gray-100 rounded-lg flex items-center justify-center group hover:shadow-lg transition-all duration-300">
+                        <i class="fab fa-meta text-3xl text-gray-400 group-hover:text-primary transition-colors duration-300"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- @END_COMPONENT: BrandPartners -->
+
+    <!-- @COMPONENT: FeaturedCourses -->
+    <!-- Featured Courses Section -->
+    <section class="py-20 bg-gray-50" id="courses">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16 animate-on-scroll">
+                <span class="inline-block px-4 py-2 bg-primary/10 text-primary rounded-full text-sm font-semibold mb-4">
+                    Trending Courses
+                </span>
+                <h2 class="text-4xl lg:text-5xl font-bold text-gray-800 mb-6">Top Courses We Have</h2>
+                <p class="text-xl text-gray-600 max-w-3xl mx-auto">
+                    Explore our most popular and sought-after courses designed to elevate your skills and knowledge in today's competitive market.
+                </p>
+            </div>
+
+            <!-- Course Categories Filter -->
+            <div class="flex flex-wrap justify-center gap-4 mb-12 animate-on-scroll">
+                <button class="px-6 py-3 bg-primary text-white rounded-full font-semibold transition-all duration-300 hover:scale-105 shadow-lg" data-category="all">
+                    All Courses
+                </button>
+                <button class="px-6 py-3 bg-white text-gray-600 hover:text-primary rounded-full font-semibold transition-all duration-300 hover:scale-105 shadow-sm" data-category="tech">
+                    Technology
+                </button>
+                <button class="px-6 py-3 bg-white text-gray-600 hover:text-primary rounded-full font-semibold transition-all duration-300 hover:scale-105 shadow-sm" data-category="business">
+                    Business
+                </button>
+                <button class="px-6 py-3 bg-white text-gray-600 hover:text-primary rounded-full font-semibold transition-all duration-300 hover:scale-105 shadow-sm" data-category="creative">
+                    Creative
+                </button>
+                <button class="px-6 py-3 bg-white text-gray-600 hover:text-primary rounded-full font-semibold transition-all duration-300 hover:scale-105 shadow-sm" data-category="personal">
+                    Personal Development
+                </button>
+            </div>
+
+            <!-- Courses Grid -->
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8">
+                <!-- @MAP: courses.map(course => ( -->
+                
+                <!-- Course Card 1 - YouTube Growth -->
+                <div class="course-card bg-white rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-500 hover:-translate-y-2 animate-on-scroll" data-category="business">
+                    <div class="relative">
+                        <!-- Professional business training session -->
+                        <img src="https://images.unsplash.com/photo-1552664730-d307ca884978?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=400&h=250" 
+                             alt="YouTube growth strategy training session" 
+                             class="w-full h-48 object-cover rounded-t-2xl" />
+                        <div class="absolute top-4 left-4 bg-primary text-white px-3 py-1 rounded-full text-sm font-semibold">
+                            Business
+                        </div>
+                        <div class="absolute top-4 right-4 bg-white/90 backdrop-blur-sm rounded-full p-2">
+                            <i class="fas fa-heart text-gray-400 hover:text-red-500 cursor-pointer transition-colors duration-300"></i>
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <div class="flex items-center justify-between mb-3">
+                            <div class="flex items-center space-x-1 text-yellow-400">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <span class="text-gray-600 text-sm ml-2">(4.8)</span>
+                            </div>
+                            <span class="text-sm text-gray-500">5 lessons</span>
+                        </div>
+                        <h3 class="text-lg font-bold text-gray-800 mb-3 hover:text-primary transition-colors duration-300 cursor-pointer">
+                            10 Ways to Grow Your YouTube Channel
+                        </h3>
+                        <div class="flex items-center justify-between">
+                            <div class="text-2xl font-bold text-primary">₹2,499</div>
+                            <button class="bg-primary/10 hover:bg-primary hover:text-white text-primary px-4 py-2 rounded-lg font-semibold transition-all duration-300">
+                                Enroll Now
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Course Card 2 - Adobe Photoshop -->
+                <div class="course-card bg-white rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-500 hover:-translate-y-2 animate-on-scroll" data-category="creative">
+                    <div class="relative">
+                        <!-- Creative design workspace with modern computer setup -->
+                        <img src="https://images.unsplash.com/photo-1572044162444-ad60f128bdea?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=400&h=250" 
+                             alt="Adobe Photoshop design workspace" 
+                             class="w-full h-48 object-cover rounded-t-2xl" />
+                        <div class="absolute top-4 left-4 bg-accent text-white px-3 py-1 rounded-full text-sm font-semibold">
+                            Creative
+                        </div>
+                        <div class="absolute top-4 right-4 bg-white/90 backdrop-blur-sm rounded-full p-2">
+                            <i class="fas fa-heart text-gray-400 hover:text-red-500 cursor-pointer transition-colors duration-300"></i>
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <div class="flex items-center justify-between mb-3">
+                            <div class="flex items-center space-x-1 text-yellow-400">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <span class="text-gray-600 text-sm ml-2">(4.8)</span>
+                            </div>
+                            <span class="text-sm text-gray-500">5 lessons</span>
+                        </div>
+                        <h3 class="text-lg font-bold text-gray-800 mb-3 hover:text-primary transition-colors duration-300 cursor-pointer">
+                            Adobe Photoshop Mastery
+                        </h3>
+                        <div class="flex items-center justify-between">
+                            <div class="text-2xl font-bold text-primary">₹3,499</div>
+                            <button class="bg-primary/10 hover:bg-primary hover:text-white text-primary px-4 py-2 rounded-lg font-semibold transition-all duration-300">
+                                Enroll Now
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Course Card 3 - Python Programming -->
+                <div class="course-card bg-white rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-500 hover:-translate-y-2 animate-on-scroll" data-category="tech">
+                    <div class="relative">
+                        <!-- Modern tech workspace with code on screen -->
+                        <img src="https://images.unsplash.com/photo-1515879218367-8466d910aaa4?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=400&h=250" 
+                             alt="Python programming code on computer screen" 
+                             class="w-full h-48 object-cover rounded-t-2xl" />
+                        <div class="absolute top-4 left-4 bg-green-500 text-white px-3 py-1 rounded-full text-sm font-semibold">
+                            Technology
+                        </div>
+                        <div class="absolute top-4 right-4 bg-white/90 backdrop-blur-sm rounded-full p-2">
+                            <i class="fas fa-heart text-gray-400 hover:text-red-500 cursor-pointer transition-colors duration-300"></i>
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <div class="flex items-center justify-between mb-3">
+                            <div class="flex items-center space-x-1 text-yellow-400">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <span class="text-gray-600 text-sm ml-2">(4.8)</span>
+                            </div>
+                            <span class="text-sm text-gray-500">5 lessons</span>
+                        </div>
+                        <h3 class="text-lg font-bold text-gray-800 mb-3 hover:text-primary transition-colors duration-300 cursor-pointer">
+                            Python for Beginners
+                        </h3>
+                        <div class="flex items-center justify-between">
+                            <div class="text-2xl font-bold text-primary">₹4,999</div>
+                            <button class="bg-primary/10 hover:bg-primary hover:text-white text-primary px-4 py-2 rounded-lg font-semibold transition-all duration-300">
+                                Enroll Now
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Course Card 4 - Public Speaking -->
+                <div class="course-card bg-white rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-500 hover:-translate-y-2 animate-on-scroll" data-category="personal">
+                    <div class="relative">
+                        <!-- Professional presenter giving presentation to business audience -->
+                        <img src="https://images.unsplash.com/photo-1475721027785-f74eccf877e2?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=400&h=250" 
+                             alt="Professional public speaking presentation" 
+                             class="w-full h-48 object-cover rounded-t-2xl" />
+                        <div class="absolute top-4 left-4 bg-purple-500 text-white px-3 py-1 rounded-full text-sm font-semibold">
+                            Personal
+                        </div>
+                        <div class="absolute top-4 right-4 bg-white/90 backdrop-blur-sm rounded-full p-2">
+                            <i class="fas fa-heart text-gray-400 hover:text-red-500 cursor-pointer transition-colors duration-300"></i>
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <div class="flex items-center justify-between mb-3">
+                            <div class="flex items-center space-x-1 text-yellow-400">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <span class="text-gray-600 text-sm ml-2">(4.8)</span>
+                            </div>
+                            <span class="text-sm text-gray-500">5 lessons</span>
+                        </div>
+                        <h3 class="text-lg font-bold text-gray-800 mb-3 hover:text-primary transition-colors duration-300 cursor-pointer">
+                            Public Speaking Mastery
+                        </h3>
+                        <div class="flex items-center justify-between">
+                            <div class="text-2xl font-bold text-primary">₹1,999</div>
+                            <button class="bg-primary/10 hover:bg-primary hover:text-white text-primary px-4 py-2 rounded-lg font-semibold transition-all duration-300">
+                                Enroll Now
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Course Card 5 - Excel Course -->
+                <div class="course-card bg-white rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-500 hover:-translate-y-2 animate-on-scroll" data-category="business">
+                    <div class="relative">
+                        <!-- Business professional working on Excel spreadsheet -->
+                        <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=400&h=250" 
+                             alt="Excel data analysis on computer screen" 
+                             class="w-full h-48 object-cover rounded-t-2xl" />
+                        <div class="absolute top-4 left-4 bg-primary text-white px-3 py-1 rounded-full text-sm font-semibold">
+                            Business
+                        </div>
+                        <div class="absolute top-4 right-4 bg-white/90 backdrop-blur-sm rounded-full p-2">
+                            <i class="fas fa-heart text-gray-400 hover:text-red-500 cursor-pointer transition-colors duration-300"></i>
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <div class="flex items-center justify-between mb-3">
+                            <div class="flex items-center space-x-1 text-yellow-400">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <span class="text-gray-600 text-sm ml-2">(4.8)</span>
+                            </div>
+                            <span class="text-sm text-gray-500">10 lessons</span>
+                        </div>
+                        <h3 class="text-lg font-bold text-gray-800 mb-3 hover:text-primary transition-colors duration-300 cursor-pointer">
+                            Excel Advanced Course
+                        </h3>
+                        <div class="flex items-center justify-between">
+                            <div class="text-2xl font-bold text-primary">₹2,999</div>
+                            <button class="bg-primary/10 hover:bg-primary hover:text-white text-primary px-4 py-2 rounded-lg font-semibold transition-all duration-300">
+                                Enroll Now
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Course Card 6 - Digital Marketing -->
+                <div class="course-card bg-white rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-500 hover:-translate-y-2 animate-on-scroll" data-category="business">
+                    <div class="relative">
+                        <!-- Digital marketing analytics dashboard on laptop screen -->
+                        <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=400&h=250" 
+                             alt="Digital marketing analytics and graphs on laptop" 
+                             class="w-full h-48 object-cover rounded-t-2xl" />
+                        <div class="absolute top-4 left-4 bg-primary text-white px-3 py-1 rounded-full text-sm font-semibold">
+                            Business
+                        </div>
+                        <div class="absolute top-4 right-4 bg-white/90 backdrop-blur-sm rounded-full p-2">
+                            <i class="fas fa-heart text-gray-400 hover:text-red-500 cursor-pointer transition-colors duration-300"></i>
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <div class="flex items-center justify-between mb-3">
+                            <div class="flex items-center space-x-1 text-yellow-400">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <span class="text-gray-600 text-sm ml-2">(4.8)</span>
+                            </div>
+                            <span class="text-sm text-gray-500">8 lessons</span>
+                        </div>
+                        <h3 class="text-lg font-bold text-gray-800 mb-3 hover:text-primary transition-colors duration-300 cursor-pointer">
+                            Digital Marketing Mastery
+                        </h3>
+                        <div class="flex items-center justify-between">
+                            <div class="text-2xl font-bold text-primary">₹5,999</div>
+                            <button class="bg-primary/10 hover:bg-primary hover:text-white text-primary px-4 py-2 rounded-lg font-semibold transition-all duration-300">
+                                Enroll Now
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Course Card 7 - Web Development -->
+                <div class="course-card bg-white rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-500 hover:-translate-y-2 animate-on-scroll" data-category="tech">
+                    <div class="relative">
+                        <!-- Web developer coding on multiple monitors setup -->
+                        <img src="https://images.unsplash.com/photo-1498050108023-c5249f4df085?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=400&h=250" 
+                             alt="Web development code on computer screens" 
+                             class="w-full h-48 object-cover rounded-t-2xl" />
+                        <div class="absolute top-4 left-4 bg-green-500 text-white px-3 py-1 rounded-full text-sm font-semibold">
+                            Technology
+                        </div>
+                        <div class="absolute top-4 right-4 bg-white/90 backdrop-blur-sm rounded-full p-2">
+                            <i class="fas fa-heart text-gray-400 hover:text-red-500 cursor-pointer transition-colors duration-300"></i>
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <div class="flex items-center justify-between mb-3">
+                            <div class="flex items-center space-x-1 text-yellow-400">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <span class="text-gray-600 text-sm ml-2">(4.8)</span>
+                            </div>
+                            <span class="text-sm text-gray-500">12 lessons</span>
+                        </div>
+                        <h3 class="text-lg font-bold text-gray-800 mb-3 hover:text-primary transition-colors duration-300 cursor-pointer">
+                            Complete Web Development
+                        </h3>
+                        <div class="flex items-center justify-between">
+                            <div class="text-2xl font-bold text-primary">₹7,999</div>
+                            <button class="bg-primary/10 hover:bg-primary hover:text-white text-primary px-4 py-2 rounded-lg font-semibold transition-all duration-300">
+                                Enroll Now
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Course Card 8 - Content Creation -->
+                <div class="course-card bg-white rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-500 hover:-translate-y-2 animate-on-scroll" data-category="creative">
+                    <div class="relative">
+                        <!-- Content creator with camera and lighting setup -->
+                        <img src="https://images.unsplash.com/photo-1493612276216-ee3925520721?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=400&h=250" 
+                             alt="Content creation setup with camera and studio lights" 
+                             class="w-full h-48 object-cover rounded-t-2xl" />
+                        <div class="absolute top-4 left-4 bg-accent text-white px-3 py-1 rounded-full text-sm font-semibold">
+                            Creative
+                        </div>
+                        <div class="absolute top-4 right-4 bg-white/90 backdrop-blur-sm rounded-full p-2">
+                            <i class="fas fa-heart text-gray-400 hover:text-red-500 cursor-pointer transition-colors duration-300"></i>
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <div class="flex items-center justify-between mb-3">
+                            <div class="flex items-center space-x-1 text-yellow-400">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <span class="text-gray-600 text-sm ml-2">(4.8)</span>
+                            </div>
+                            <span class="text-sm text-gray-500">6 lessons</span>
+                        </div>
+                        <h3 class="text-lg font-bold text-gray-800 mb-3 hover:text-primary transition-colors duration-300 cursor-pointer">
+                            Content Creation Mastery
+                        </h3>
+                        <div class="flex items-center justify-between">
+                            <div class="text-2xl font-bold text-primary">₹3,999</div>
+                            <button class="bg-primary/10 hover:bg-primary hover:text-white text-primary px-4 py-2 rounded-lg font-semibold transition-all duration-300">
+                                Enroll Now
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- @END_MAP )) -->
+            </div>
+
+            <div class="text-center mt-12 animate-on-scroll">
+                <a href="#packages" class="bg-primary hover:bg-blue-700 text-white px-8 py-4 rounded-xl font-semibold text-lg transition-all duration-300 hover:scale-105 shadow-lg inline-flex items-center space-x-2">
+                    <span>View All Courses</span>
+                    <i class="fas fa-arrow-right"></i>
+                </a>
+            </div>
+        </div>
+    </section>
+    <!-- @END_COMPONENT: FeaturedCourses -->
+
+    <!-- @COMPONENT: AboutSection -->
+    <!-- About Section -->
+    <section class="py-20 bg-white" id="about">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid lg:grid-cols-2 gap-16 items-center">
+                <div class="animate-on-scroll">
+                    <div class="relative">
+                        <!-- Modern corporate training session with professional instructor -->
+                        <img src="https://images.unsplash.com/photo-1542744173-8e7e53415bb0?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=600&h=400" 
+                             alt="Professional corporate training session in modern office" 
+                             class="rounded-2xl shadow-2xl w-full" />
+                        
+                        <!-- Floating Achievement Cards -->
+                        <div class="absolute -bottom-6 -right-6 bg-white rounded-xl p-6 shadow-xl max-w-xs">
+                            <div class="flex items-center space-x-4">
+                                <div class="w-12 h-12 bg-primary/10 rounded-full flex items-center justify-center">
+                                    <i class="fas fa-graduation-cap text-primary text-xl"></i>
+                                </div>
+                                <div>
+                                    <div class="text-2xl font-bold text-gray-800">25+</div>
+                                    <div class="text-sm text-gray-600">Top Courses</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="animate-on-scroll">
+                    <span class="inline-block px-4 py-2 bg-primary/10 text-primary rounded-full text-sm font-semibold mb-4">
+                        About Us
+                    </span>
+                    <h2 class="text-4xl lg:text-5xl font-bold text-gray-800 mb-6">
+                        <span class="text-primary">25 Of Top</span> Courses<br>
+                        Now in One Place
+                    </h2>
+                    <p class="text-lg text-gray-600 mb-8 leading-relaxed">
+                        Discover a curated selection of the 25 best courses offered by KnowledgeWaveIndia, covering a diverse range of subjects. Whether you're looking to enhance your skills in technology, business, arts, or personal development, these top-rated courses provide comprehensive content and expert instruction.
+                    </p>
+
+                    <!-- Feature List -->
+                    <div class="space-y-4 mb-8">
+                        <div class="flex items-center space-x-4">
+                            <div class="w-8 h-8 bg-primary/10 rounded-full flex items-center justify-center flex-shrink-0">
+                                <i class="fas fa-check text-primary"></i>
+                            </div>
+                            <span class="text-lg text-gray-700 font-medium">The Most World Class Instructors</span>
+                        </div>
+                        <div class="flex items-center space-x-4">
+                            <div class="w-8 h-8 bg-primary/10 rounded-full flex items-center justify-center flex-shrink-0">
+                                <i class="fas fa-check text-primary"></i>
+                            </div>
+                            <span class="text-lg text-gray-700 font-medium">Access Your Class Anywhere</span>
+                        </div>
+                        <div class="flex items-center space-x-4">
+                            <div class="w-8 h-8 bg-primary/10 rounded-full flex items-center justify-center flex-shrink-0">
+                                <i class="fas fa-check text-primary"></i>
+                            </div>
+                            <span class="text-lg text-gray-700 font-medium">Flexible Course Plan</span>
+                        </div>
+                    </div>
+
+                    <a href="#packages" class="bg-primary hover:bg-blue-700 text-white px-8 py-4 rounded-xl font-semibold text-lg transition-all duration-300 hover:scale-105 shadow-lg inline-flex items-center space-x-2">
+                        <span>Enroll Now</span>
+                        <i class="fas fa-arrow-right"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- @END_COMPONENT: AboutSection -->
+
+    <!-- @COMPONENT: PackagesSection -->
+    <!-- Packages Section -->
+    <section class="py-20 bg-gradient-to-br from-gray-50 to-blue-50" id="packages">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16 animate-on-scroll">
+                <span class="inline-block px-4 py-2 bg-primary/10 text-primary rounded-full text-sm font-semibold mb-4">
+                    Top Class Packages
+                </span>
+                <h2 class="text-4xl lg:text-5xl font-bold text-gray-800 mb-6">Explore Our World's Best Packages</h2>
+                <p class="text-xl text-gray-600 max-w-3xl mx-auto">
+                    Explore the world's best learning packages with KnowledgeWaveIndia, offering top-notch courses in various fields designed for professional growth.
+                </p>
+            </div>
+
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Package 1 - Grow Wave -->
+                <div class="bg-white rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-500 hover:-translate-y-2 animate-on-scroll">
+                    <div class="relative">
+                        <!-- Professional business growth concept image -->
+                        <img src="https://images.unsplash.com/photo-1559136555-9303baea8ebd?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=400&h=250" 
+                             alt="Business growth and development concept" 
+                             class="w-full h-48 object-cover rounded-t-2xl" />
+                        <div class="absolute top-4 left-4 bg-green-500 text-white px-3 py-1 rounded-full text-sm font-semibold">
+                            Popular
+                        </div>
+                    </div>
+                    <div class="p-8">
+                        <div class="flex items-center justify-between mb-4">
+                            <span class="bg-primary/10 text-primary px-3 py-1 rounded-full text-sm font-semibold">Development</span>
+                            <div class="flex items-center space-x-1 text-yellow-400">
+                                <i class="fas fa-star"></i>
+                                <span class="text-gray-600 text-sm">(4.8 Reviews)</span>
+                            </div>
+                        </div>
+                        <h3 class="text-2xl font-bold text-gray-800 mb-4">Grow Wave</h3>
+                        <div class="flex items-baseline space-x-2 mb-6">
+                            <span class="text-3xl font-bold text-gray-400 line-through">₹3,000</span>
+                            <span class="text-4xl font-bold text-primary">₹2,000</span>
+                        </div>
+                        <ul class="space-y-3 mb-8">
+                            <li class="flex items-center space-x-3">
+                                <i class="fas fa-check text-green-500"></i>
+                                <span class="text-gray-600">Basic Business Courses</span>
+                            </li>
+                            <li class="flex items-center space-x-3">
+                                <i class="fas fa-check text-green-500"></i>
+                                <span class="text-gray-600">Email Support</span>
+                            </li>
+                            <li class="flex items-center space-x-3">
+                                <i class="fas fa-check text-green-500"></i>
+                                <span class="text-gray-600">Basic Certificate</span>
+                            </li>
+                        </ul>
+                        <button class="w-full bg-primary hover:bg-blue-700 text-white py-4 rounded-xl font-semibold text-lg transition-all duration-300 hover:scale-105 shadow-lg">
+                            Enroll Now
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Package 2 - Expert Wave -->
+                <div class="bg-white rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-500 hover:-translate-y-2 animate-on-scroll border-2 border-primary relative">
+                    <div class="absolute -top-4 left-1/2 transform -translate-x-1/2 bg-primary text-white px-4 py-2 rounded-full text-sm font-semibold">
+                        Most Popular
+                    </div>
+                    <div class="relative">
+                        <!-- Expert professional in modern office environment -->
+                        <img src="https://images.unsplash.com/photo-1556761175-b413da4baf72?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=400&h=250" 
+                             alt="Professional expert in modern office setting" 
+                             class="w-full h-48 object-cover rounded-t-2xl" />
+                        <div class="absolute top-4 left-4 bg-primary text-white px-3 py-1 rounded-full text-sm font-semibold">
+                            Recommended
+                        </div>
+                    </div>
+                    <div class="p-8">
+                        <div class="flex items-center justify-between mb-4">
+                            <span class="bg-primary/10 text-primary px-3 py-1 rounded-full text-sm font-semibold">Development</span>
+                            <div class="flex items-center space-x-1 text-yellow-400">
+                                <i class="fas fa-star"></i>
+                                <span class="text-gray-600 text-sm">(4.8 Reviews)</span>
+                            </div>
+                        </div>
+                        <h3 class="text-2xl font-bold text-gray-800 mb-4">Expert Wave</h3>
+                        <div class="flex items-baseline space-x-2 mb-6">
+                            <span class="text-3xl font-bold text-gray-400 line-through">₹4,500</span>
+                            <span class="text-4xl font-bold text-primary">₹4,000</span>
+                        </div>
+                        <ul class="space-y-3 mb-8">
+                            <li class="flex items-center space-x-3">
+                                <i class="fas fa-check text-green-500"></i>
+                                <span class="text-gray-600">Advanced Courses</span>
+                            </li>
+                            <li class="flex items-center space-x-3">
+                                <i class="fas fa-check text-green-500"></i>
+                                <span class="text-gray-600">Priority Support</span>
+                            </li>
+                            <li class="flex items-center space-x-3">
+                                <i class="fas fa-check text-green-500"></i>
+                                <span class="text-gray-600">Expert Certificate</span>
+                            </li>
+                            <li class="flex items-center space-x-3">
+                                <i class="fas fa-check text-green-500"></i>
+                                <span class="text-gray-600">1-on-1 Mentoring</span>
+                            </li>
+                        </ul>
+                        <button class="w-full bg-primary hover:bg-blue-700 text-white py-4 rounded-xl font-semibold text-lg transition-all duration-300 hover:scale-105 shadow-lg">
+                            Enroll Now
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Package 3 - Tech Wave -->
+                <div class="bg-white rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-500 hover:-translate-y-2 animate-on-scroll">
+                    <div class="relative">
+                        <!-- Modern technology and innovation workspace -->
+                        <img src="https://pixabay.com/get/g6fe0f191daa0a1e956be6ba520c24cf181a8c627c98d1741f14e48429541118de1be93034d03cbc29d1411136febc824de8c4f360968196ccc007ccd422dabba_1280.jpg" 
+                             alt="Advanced technology and innovation workspace" 
+                             class="w-full h-48 object-cover rounded-t-2xl" />
+                        <div class="absolute top-4 left-4 bg-green-500 text-white px-3 py-1 rounded-full text-sm font-semibold">
+                            Premium
+                        </div>
+                    </div>
+                    <div class="p-8">
+                        <div class="flex items-center justify-between mb-4">
+                            <span class="bg-primary/10 text-primary px-3 py-1 rounded-full text-sm font-semibold">Development</span>
+                            <div class="flex items-center space-x-1 text-yellow-400">
+                                <i class="fas fa-star"></i>
+                                <span class="text-gray-600 text-sm">(4.8 Reviews)</span>
+                            </div>
+                        </div>
+                        <h3 class="text-2xl font-bold text-gray-800 mb-4">Tech Wave</h3>
+                        <div class="flex items-baseline space-x-2 mb-6">
+                            <span class="text-3xl font-bold text-gray-400 line-through">₹23,000</span>
+                            <span class="text-4xl font-bold text-primary">₹20,000</span>
+                        </div>
+                        <ul class="space-y-3 mb-8">
+                            <li class="flex items-center space-x-3">
+                                <i class="fas fa-check text-green-500"></i>
+                                <span class="text-gray-600">All Tech Courses</span>
+                            </li>
+                            <li class="flex items-center space-x-3">
+                                <i class="fas fa-check text-green-500"></i>
+                                <span class="text-gray-600">24/7 Premium Support</span>
+                            </li>
+                            <li class="flex items-center space-x-3">
+                                <i class="fas fa-check text-green-500"></i>
+                                <span class="text-gray-600">Professional Certificate</span>
+                            </li>
+                            <li class="flex items-center space-x-3">
+                                <i class="fas fa-check text-green-500"></i>
+                                <span class="text-gray-600">Career Guidance</span>
+                            </li>
+                            <li class="flex items-center space-x-3">
+                                <i class="fas fa-check text-green-500"></i>
+                                <span class="text-gray-600">Job Placement Support</span>
+                            </li>
+                        </ul>
+                        <button class="w-full bg-primary hover:bg-blue-700 text-white py-4 rounded-xl font-semibold text-lg transition-all duration-300 hover:scale-105 shadow-lg">
+                            Enroll Now
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- @END_COMPONENT: PackagesSection -->
+
+    <!-- @COMPONENT: InstructorsSection -->
+    <!-- Expert Instructors Section -->
+    <section class="py-20 bg-white" id="instructors">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16 animate-on-scroll">
+                <span class="inline-block px-4 py-2 bg-primary/10 text-primary rounded-full text-sm font-semibold mb-4">
+                    Skilled Introduce
+                </span>
+                <h2 class="text-4xl lg:text-5xl font-bold text-gray-800 mb-6">Our Top Class & Expert Instructors in One Place</h2>
+                <p class="text-xl text-gray-600 max-w-3xl mx-auto">
+                    Learn from top-class, expert instructors all in one place with KnowledgeWaveIndia.
+                </p>
+            </div>
+
+            <!-- Instructors Carousel -->
+            <div class="relative">
+                <div class="overflow-hidden">
+                    <div class="flex space-x-6 animate-on-scroll" id="instructorsCarousel">
+                        
+                        <!-- Instructor 1 -->
+                        <div class="flex-shrink-0 w-80 bg-white rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-500 hover:-translate-y-2">
+                            <div class="relative">
+                                <!-- Professional business consultant headshot -->
+                                <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=300&h=300" 
+                                     alt="Professional business consultant headshot" 
+                                     class="w-full h-80 object-cover rounded-t-2xl" />
+                                <div class="absolute top-4 right-4 bg-white/90 backdrop-blur-sm rounded-full p-2">
+                                    <i class="fas fa-star text-yellow-400"></i>
+                                </div>
+                            </div>
+                            <div class="p-6">
+                                <h3 class="text-xl font-bold text-gray-800 mb-2">Kartik Kaushik</h3>
+                                <p class="text-primary font-semibold mb-3">Digital Marketing Expert</p>
+                                <div class="flex items-center justify-between">
+                                    <div class="flex items-center space-x-1 text-yellow-400">
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <span class="text-gray-600 text-sm ml-2">(4.8 Ratings)</span>
+                                    </div>
+                                </div>
+                                <button class="w-full mt-4 bg-primary/10 hover:bg-primary hover:text-white text-primary py-3 rounded-lg font-semibold transition-all duration-300">
+                                    View Profile
+                                </button>
+                            </div>
+                        </div>
+
+                        <!-- Instructor 2 -->
+                        <div class="flex-shrink-0 w-80 bg-white rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-500 hover:-translate-y-2">
+                            <div class="relative">
+                                <!-- Professional female business consultant -->
+                                <img src="https://pixabay.com/get/gebb2c57003b70fc8c518d795e958316033e5e4c2068d1c6975a76c9d994d70297e57e4c36ab204f8162feb80848e03f9550f2d829c0d2fd80e1c0a75fff0a24a_1280.jpg" 
+                                     alt="Professional female business consultant" 
+                                     class="w-full h-80 object-cover rounded-t-2xl" />
+                                <div class="absolute top-4 right-4 bg-white/90 backdrop-blur-sm rounded-full p-2">
+                                    <i class="fas fa-star text-yellow-400"></i>
+                                </div>
+                            </div>
+                            <div class="p-6">
+                                <h3 class="text-xl font-bold text-gray-800 mb-2">Harsh Vikal</h3>
+                                <p class="text-primary font-semibold mb-3">Business Consultant</p>
+                                <div class="flex items-center justify-between">
+                                    <div class="flex items-center space-x-1 text-yellow-400">
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <span class="text-gray-600 text-sm ml-2">(4.8 Ratings)</span>
+                                    </div>
+                                </div>
+                                <button class="w-full mt-4 bg-primary/10 hover:bg-primary hover:text-white text-primary py-3 rounded-lg font-semibold transition-all duration-300">
+                                    View Profile
+                                </button>
+                            </div>
+                        </div>
+
+                        <!-- Instructor 3 -->
+                        <div class="flex-shrink-0 w-80 bg-white rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-500 hover:-translate-y-2">
+                            <div class="relative">
+                                <!-- Professional male sales coach headshot -->
+                                <img src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=300&h=300" 
+                                     alt="Professional male sales coach headshot" 
+                                     class="w-full h-80 object-cover rounded-t-2xl" />
+                                <div class="absolute top-4 right-4 bg-white/90 backdrop-blur-sm rounded-full p-2">
+                                    <i class="fas fa-star text-yellow-400"></i>
+                                </div>
+                            </div>
+                            <div class="p-6">
+                                <h3 class="text-xl font-bold text-gray-800 mb-2">Sumit Sengar</h3>
+                                <p class="text-primary font-semibold mb-3">Sales Coach</p>
+                                <div class="flex items-center justify-between">
+                                    <div class="flex items-center space-x-1 text-yellow-400">
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <span class="text-gray-600 text-sm ml-2">(4.8 Ratings)</span>
+                                    </div>
+                                </div>
+                                <button class="w-full mt-4 bg-primary/10 hover:bg-primary hover:text-white text-primary py-3 rounded-lg font-semibold transition-all duration-300">
+                                    View Profile
+                                </button>
+                            </div>
+                        </div>
+
+                        <!-- Instructor 4 -->
+                        <div class="flex-shrink-0 w-80 bg-white rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-500 hover:-translate-y-2">
+                            <div class="relative">
+                                <!-- Professional life coach headshot -->
+                                <img src="https://images.unsplash.com/photo-1560250097-0b93528c311a?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=300&h=300" 
+                                     alt="Professional life coach headshot" 
+                                     class="w-full h-80 object-cover rounded-t-2xl" />
+                                <div class="absolute top-4 right-4 bg-white/90 backdrop-blur-sm rounded-full p-2">
+                                    <i class="fas fa-star text-yellow-400"></i>
+                                </div>
+                            </div>
+                            <div class="p-6">
+                                <h3 class="text-xl font-bold text-gray-800 mb-2">Ujjawal Tilwani</h3>
+                                <p class="text-primary font-semibold mb-3">Life Coach</p>
+                                <div class="flex items-center justify-between">
+                                    <div class="flex items-center space-x-1 text-yellow-400">
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <span class="text-gray-600 text-sm ml-2">(4.8 Ratings)</span>
+                                    </div>
+                                </div>
+                                <button class="w-full mt-4 bg-primary/10 hover:bg-primary hover:text-white text-primary py-3 rounded-lg font-semibold transition-all duration-300">
+                                    View Profile
+                                </button>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+
+                <!-- Carousel Controls -->
+                <button class="absolute left-4 top-1/2 transform -translate-y-1/2 bg-white hover:bg-primary hover:text-white w-12 h-12 rounded-full shadow-lg flex items-center justify-center transition-all duration-300" onclick="scrollCarousel('instructorsCarousel', -320)">
+                    <i class="fas fa-chevron-left"></i>
+                </button>
+                <button class="absolute right-4 top-1/2 transform -translate-y-1/2 bg-white hover:bg-primary hover:text-white w-12 h-12 rounded-full shadow-lg flex items-center justify-center transition-all duration-300" onclick="scrollCarousel('instructorsCarousel', 320)">
+                    <i class="fas fa-chevron-right"></i>
+                </button>
+            </div>
+        </div>
+    </section>
+    <!-- @END_COMPONENT: InstructorsSection -->
+
+    <!-- @COMPONENT: StatisticsSection -->
+    <!-- Statistics Section -->
+    <section class="py-20 bg-gradient-to-br from-primary to-blue-700 text-white relative overflow-hidden">
+        <div class="absolute inset-0 bg-black/20"></div>
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative">
+            <div class="text-center mb-16 animate-on-scroll">
+                <h2 class="text-4xl lg:text-5xl font-bold mb-6">Our Success in Numbers</h2>
+                <p class="text-xl text-white/90 max-w-3xl mx-auto">
+                    Join thousands of students who have transformed their careers with our expert-led courses.
+                </p>
+            </div>
+
+            <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+                <div class="text-center animate-on-scroll">
+                    <div class="w-20 h-20 bg-white/10 rounded-full flex items-center justify-center mx-auto mb-4">
+                        <i class="fas fa-graduation-cap text-3xl text-white"></i>
+                    </div>
+                    <div class="text-5xl font-bold mb-2" data-count="80000">0</div>
+                    <div class="text-xl font-semibold mb-2">Enrolled Students</div>
+                    <p class="text-white/80">Students learning across all our platforms</p>
+                </div>
+
+                <div class="text-center animate-on-scroll">
+                    <div class="w-20 h-20 bg-white/10 rounded-full flex items-center justify-center mx-auto mb-4">
+                        <i class="fas fa-book-open text-3xl text-white"></i>
+                    </div>
+                    <div class="text-5xl font-bold mb-2" data-count="80">0</div>
+                    <div class="text-xl font-semibold mb-2">Live Courses</div>
+                    <p class="text-white/80">Active courses across multiple disciplines</p>
+                </div>
+
+                <div class="text-center animate-on-scroll">
+                    <div class="w-20 h-20 bg-white/10 rounded-full flex items-center justify-center mx-auto mb-4">
+                        <i class="fas fa-chalkboard-teacher text-3xl text-white"></i>
+                    </div>
+                    <div class="text-5xl font-bold mb-2" data-count="80">0</div>
+                    <div class="text-xl font-semibold mb-2">Best Trainers</div>
+                    <p class="text-white/80">Expert instructors from industry leaders</p>
+                </div>
+
+                <div class="text-center animate-on-scroll">
+                    <div class="w-20 h-20 bg-white/10 rounded-full flex items-center justify-center mx-auto mb-4">
+                        <i class="fas fa-trophy text-3xl text-white"></i>
+                    </div>
+                    <div class="text-5xl font-bold mb-2" data-count="98">0</div>
+                    <div class="text-xl font-semibold mb-2">Success Rate</div>
+                    <p class="text-white/80">Student satisfaction and completion rate</p>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- @END_COMPONENT: StatisticsSection -->
+
+    <!-- @COMPONENT: NewsletterSection -->
+    <!-- Newsletter Section -->
+    <section class="py-20 bg-gradient-to-br from-gray-50 to-blue-50 relative overflow-hidden">
+        <div class="absolute inset-0">
+            <!-- Professional office environment with soft lighting -->
+            <img src="https://images.unsplash.com/photo-1497366216548-37526070297c?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1920&h=800" 
+                 alt="Modern professional office environment with soft lighting" 
+                 class="w-full h-full object-cover opacity-10" />
+        </div>
+        
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative">
+            <div class="grid lg:grid-cols-2 gap-12 items-center">
+                <div class="animate-on-scroll">
+                    <div class="relative">
+                        <!-- Professional team discussing in bright modern office -->
+                        <img src="https://images.unsplash.com/photo-1551434678-e076c223a692?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=600&h=400" 
+                             alt="Professional team collaborating in bright modern office" 
+                             class="rounded-2xl shadow-2xl w-full" />
+                        <div class="absolute inset-0 bg-gradient-to-tr from-primary/20 to-transparent rounded-2xl"></div>
+                    </div>
+                </div>
+
+                <div class="animate-on-scroll">
+                    <h2 class="text-4xl lg:text-5xl font-bold text-gray-800 mb-6">
+                        Want to stay informed about<br>
+                        <span class="text-primary">new courses</span> & study?
+                    </h2>
+                    <p class="text-xl text-gray-600 mb-8 leading-relaxed">
+                        Subscribe to our newsletter and never miss updates on new courses, special offers, and educational content designed to advance your career.
+                    </p>
+
+                    <div class="bg-white rounded-2xl shadow-lg p-6">
+                        <div class="flex flex-col sm:flex-row gap-4">
+                            <div class="flex-1">
+                                <input type="email" 
+                                       placeholder="Enter your email address" 
+                                       class="w-full px-6 py-4 border border-gray-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent text-gray-800" 
+                                       data-implementation="Email validation and subscription handling" />
+                            </div>
+                            <button class="bg-primary hover:bg-blue-700 text-white px-8 py-4 rounded-xl font-semibold transition-all duration-300 hover:scale-105 shadow-lg flex items-center justify-center space-x-2">
+                                <span>Subscribe Now</span>
+                                <i class="fas fa-paper-plane"></i>
+                            </button>
+                        </div>
+                        <p class="text-sm text-gray-500 mt-4">
+                            By subscribing, you agree to our Privacy Policy and Terms of Service.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- @END_COMPONENT: NewsletterSection -->
+
+    <!-- @COMPONENT: FAQSection -->
+    <!-- FAQ Section -->
+    <section class="py-20 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid lg:grid-cols-2 gap-16 items-start">
+                <div class="animate-on-scroll">
+                    <div class="relative">
+                        <!-- Professional consultation meeting in modern office -->
+                        <img src="https://images.unsplash.com/photo-1553877522-43269d4ea984?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=600&h=500" 
+                             alt="Professional consultation meeting in modern office" 
+                             class="rounded-2xl shadow-2xl w-full" />
+                        <div class="absolute inset-0 bg-gradient-to-br from-primary/10 to-transparent rounded-2xl"></div>
+                    </div>
+                </div>
+
+                <div class="animate-on-scroll">
+                    <span class="inline-block px-4 py-2 bg-primary/10 text-primary rounded-full text-sm font-semibold mb-4">
+                        FAQ's
+                    </span>
+                    <h2 class="text-4xl lg:text-5xl font-bold text-gray-800 mb-8">Frequently Asked Questions</h2>
+                    <p class="text-lg text-gray-600 mb-8">
+                        Find answers to common queries in our Frequently Asked Questions section.
+                    </p>
+
+                    <div class="space-y-6">
+                        <!-- FAQ Item 1 -->
+                        <div class="bg-gray-50 rounded-xl overflow-hidden">
+                            <button class="w-full px-6 py-5 text-left flex items-center justify-between hover:bg-gray-100 transition-colors duration-300" 
+                                    onclick="toggleFAQ(this)" 
+                                    data-implementation="FAQ toggle functionality">
+                                <span class="text-lg font-semibold text-gray-800">What is Knowledge Wave India?</span>
+                                <i class="fas fa-plus text-primary transition-transform duration-300"></i>
+                            </button>
+                            <div class="px-6 pb-0 max-h-0 overflow-hidden transition-all duration-300">
+                                <p class="text-gray-600 pb-5">
+                                    Knowledge Wave India is an online platform that offers digital courses and skill-based trainings to help individuals enhance their skills and knowledge in all the fields relevant in today's time.
+                                </p>
+                            </div>
+                        </div>
+
+                        <!-- FAQ Item 2 -->
+                        <div class="bg-gray-50 rounded-xl overflow-hidden">
+                            <button class="w-full px-6 py-5 text-left flex items-center justify-between hover:bg-gray-100 transition-colors duration-300" 
+                                    onclick="toggleFAQ(this)">
+                                <span class="text-lg font-semibold text-gray-800">What payment methods do you accept?</span>
+                                <i class="fas fa-plus text-primary transition-transform duration-300"></i>
+                            </button>
+                            <div class="px-6 pb-0 max-h-0 overflow-hidden transition-all duration-300">
+                                <p class="text-gray-600 pb-5">
+                                    We accept various payment methods, including major credit cards, debit cards, and online payment platforms. Simply choose your preferred payment method during the checkout process.
+                                </p>
+                            </div>
+                        </div>
+
+                        <!-- FAQ Item 3 -->
+                        <div class="bg-gray-50 rounded-xl overflow-hidden">
+                            <button class="w-full px-6 py-5 text-left flex items-center justify-between hover:bg-gray-100 transition-colors duration-300" 
+                                    onclick="toggleFAQ(this)">
+                                <span class="text-lg font-semibold text-gray-800">Is my payment information secure?</span>
+                                <i class="fas fa-plus text-primary transition-transform duration-300"></i>
+                            </button>
+                            <div class="px-6 pb-0 max-h-0 overflow-hidden transition-all duration-300">
+                                <p class="text-gray-600 pb-5">
+                                    Yes, we take the security of your payment information seriously. We use industry-standard encryption and secure payment gateways to ensure that your payment details are protected.
+                                </p>
+                            </div>
+                        </div>
+
+                        <!-- FAQ Item 4 -->
+                        <div class="bg-gray-50 rounded-xl overflow-hidden">
+                            <button class="w-full px-6 py-5 text-left flex items-center justify-between hover:bg-gray-100 transition-colors duration-300" 
+                                    onclick="toggleFAQ(this)">
+                                <span class="text-lg font-semibold text-gray-800">Can I contact support if I have questions or issues?</span>
+                                <i class="fas fa-plus text-primary transition-transform duration-300"></i>
+                            </button>
+                            <div class="px-6 pb-0 max-h-0 overflow-hidden transition-all duration-300">
+                                <p class="text-gray-600 pb-5">
+                                    Absolutely! We have a dedicated support team ready to assist you. If you have any questions, technical difficulties, or require assistance, you can reach out to our support team through the contact information provided on our website.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- @END_COMPONENT: FAQSection -->
+
+    <!-- @COMPONENT: CTASection -->
+    <!-- Learning Journey CTA Section -->
+    <section class="py-20 bg-gradient-to-br from-primary to-blue-700 text-white relative overflow-hidden">
+        <div class="absolute inset-0 bg-black/20"></div>
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative">
+            <div class="text-center mb-16 animate-on-scroll">
+                <span class="inline-block px-4 py-2 bg-white/10 text-white rounded-full text-sm font-semibold mb-4">
+                    How We Start Journey
+                </span>
+                <h2 class="text-4xl lg:text-5xl font-bold mb-6">Start your Learning Journey Today!</h2>
+                <p class="text-xl text-white/90 max-w-3xl mx-auto">
+                    Begin your educational adventure today with KnowledgeWaveIndia and transform your career!
+                </p>
+            </div>
+
+            <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-8 mb-16">
+                <div class="text-center animate-on-scroll">
+                    <div class="w-20 h-20 bg-white/10 rounded-full flex items-center justify-center mx-auto mb-4 hover:bg-white/20 transition-colors duration-300">
+                        <i class="fas fa-user-graduate text-3xl text-white"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3">Learn with Experts</h3>
+                    <p class="text-white/80">Gain knowledge from industry experts with KnowledgeWaveIndia.</p>
+                </div>
+
+                <div class="text-center animate-on-scroll">
+                    <div class="w-20 h-20 bg-white/10 rounded-full flex items-center justify-center mx-auto mb-4 hover:bg-white/20 transition-colors duration-300">
+                        <i class="fas fa-brain text-3xl text-white"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3">Learn Anything</h3>
+                    <p class="text-white/80">Master any subject with KnowledgeWaveIndia's diverse course offerings.</p>
+                </div>
+
+                <div class="text-center animate-on-scroll">
+                    <div class="w-20 h-20 bg-white/10 rounded-full flex items-center justify-center mx-auto mb-4 hover:bg-white/20 transition-colors duration-300">
+                        <i class="fas fa-certificate text-3xl text-white"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3">Get Online Certificate</h3>
+                    <p class="text-white/80">Earn an online certificate with KnowledgeWaveIndia's accredited courses.</p>
+                </div>
+
+                <div class="text-center animate-on-scroll">
+                    <div class="w-20 h-20 bg-white/10 rounded-full flex items-center justify-center mx-auto mb-4 hover:bg-white/20 transition-colors duration-300">
+                        <i class="fas fa-rocket text-3xl text-white"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3">Comprehensive Learning</h3>
+                    <p class="text-white/80">Experience comprehensive learning with KnowledgeWaveIndia's extensive course catalog.</p>
+                </div>
+            </div>
+
+            <!-- Become Instructor/Student Section -->
+            <div class="grid lg:grid-cols-2 gap-8">
+                <div class="bg-white/10 backdrop-blur-sm rounded-2xl p-8 hover:bg-white/15 transition-all duration-300 animate-on-scroll">
+                    <div class="flex items-center space-x-6">
+                        <div class="flex-shrink-0">
+                            <!-- Professional instructor teaching in modern classroom -->
+                            <img src="https://images.unsplash.com/photo-1573497161161-c3e73707e25c?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=150&h=150" 
+                                 alt="Professional instructor teaching in modern classroom" 
+                                 class="w-20 h-20 rounded-full object-cover" />
+                        </div>
+                        <div class="flex-1">
+                            <h3 class="text-2xl font-bold text-white mb-2">Become an Instructor</h3>
+                            <p class="text-white/80 mb-4">
+                                Become an instructor with KnowledgeWaveIndia and share your expertise with the world.
+                            </p>
+                            <a href="#contact" class="inline-flex items-center space-x-2 bg-white text-primary px-6 py-3 rounded-lg font-semibold hover:bg-gray-100 transition-colors duration-300">
+                                <span>Apply Now</span>
+                                <i class="fas fa-arrow-right"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="bg-white/10 backdrop-blur-sm rounded-2xl p-8 hover:bg-white/15 transition-all duration-300 animate-on-scroll">
+                    <div class="flex items-center space-x-6">
+                        <div class="flex-shrink-0">
+                            <!-- Young professional student with laptop in modern workspace -->
+                            <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=150&h=150" 
+                                 alt="Young professional student with laptop in modern workspace" 
+                                 class="w-20 h-20 rounded-full object-cover" />
+                        </div>
+                        <div class="flex-1">
+                            <h3 class="text-2xl font-bold text-white mb-2">Become a Student</h3>
+                            <p class="text-white/80 mb-4">
+                                Embark on your learning journey and become a student at KnowledgeWaveIndia.
+                            </p>
+                            <a href="#packages" class="inline-flex items-center space-x-2 bg-white text-primary px-6 py-3 rounded-lg font-semibold hover:bg-gray-100 transition-colors duration-300">
+                                <span>Apply Now</span>
+                                <i class="fas fa-arrow-right"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- @END_COMPONENT: CTASection -->
+
+    <!-- @COMPONENT: Footer -->
+    <!-- Footer -->
+    <footer class="bg-gray-800 text-white py-16" id="contact">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+                <!-- Company Info -->
+                <div>
+                    <div class="flex items-center space-x-3 mb-6">
+                        <div class="w-10 h-10 bg-gradient-to-br from-primary to-accent rounded-lg flex items-center justify-center">
+                            <i class="fas fa-wave-square text-white text-xl"></i>
+                        </div>
+                        <span class="text-2xl font-bold">Knowledge<span class="text-primary">Wave</span></span>
+                    </div>
+                    <p class="text-gray-300 mb-6 leading-relaxed">
+                        Transform your career with our expert-led courses and comprehensive learning platform designed for professional success.
+                    </p>
+                    <div class="flex space-x-4">
+                        <a href="#" class="w-10 h-10 bg-gray-700 hover:bg-primary rounded-full flex items-center justify-center transition-colors duration-300">
+                            <i class="fab fa-facebook-f"></i>
+                        </a>
+                        <a href="#" class="w-10 h-10 bg-gray-700 hover:bg-primary rounded-full flex items-center justify-center transition-colors duration-300">
+                            <i class="fab fa-twitter"></i>
+                        </a>
+                        <a href="#" class="w-10 h-10 bg-gray-700 hover:bg-primary rounded-full flex items-center justify-center transition-colors duration-300">
+                            <i class="fab fa-instagram"></i>
+                        </a>
+                        <a href="#" class="w-10 h-10 bg-gray-700 hover:bg-primary rounded-full flex items-center justify-center transition-colors duration-300">
+                            <i class="fab fa-linkedin-in"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Quick Links -->
+                <div>
+                    <h3 class="text-xl font-bold mb-6">Quick Links</h3>
+                    <ul class="space-y-3">
+                        <li><a href="#about" class="text-gray-300 hover:text-white transition-colors duration-300">About Us</a></li>
+                        <li><a href="#courses" class="text-gray-300 hover:text-white transition-colors duration-300">Courses</a></li>
+                        <li><a href="#packages" class="text-gray-300 hover:text-white transition-colors duration-300">Packages</a></li>
+                        <li><a href="#instructors" class="text-gray-300 hover:text-white transition-colors duration-300">Instructors</a></li>
+                        <li><a href="#" class="text-gray-300 hover:text-white transition-colors duration-300">Blog</a></li>
+                    </ul>
+                </div>
+
+                <!-- Support -->
+                <div>
+                    <h3 class="text-xl font-bold mb-6">Support</h3>
+                    <ul class="space-y-3">
+                        <li><a href="#" class="text-gray-300 hover:text-white transition-colors duration-300">Help Center</a></li>
+                        <li><a href="#" class="text-gray-300 hover:text-white transition-colors duration-300">Contact Support</a></li>
+                        <li><a href="#" class="text-gray-300 hover:text-white transition-colors duration-300">Privacy Policy</a></li>
+                        <li><a href="#" class="text-gray-300 hover:text-white transition-colors duration-300">Terms of Service</a></li>
+                        <li><a href="#" class="text-gray-300 hover:text-white transition-colors duration-300">Refund Policy</a></li>
+                    </ul>
+                </div>
+
+                <!-- Contact Info -->
+                <div>
+                    <h3 class="text-xl font-bold mb-6">Contact Info</h3>
+                    <div class="space-y-4">
+                        <div class="flex items-start space-x-3">
+                            <i class="fas fa-envelope text-primary mt-1"></i>
+                            <span class="text-gray-300">support@knowledgewaveindia.com</span>
+                        </div>
+                        <div class="flex items-start space-x-3">
+                            <i class="fas fa-phone text-primary mt-1"></i>
+                            <span class="text-gray-300">+91 98765 43210</span>
+                        </div>
+                        <div class="flex items-start space-x-3">
+                            <i class="fas fa-map-marker-alt text-primary mt-1"></i>
+                            <span class="text-gray-300">New Delhi, India</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Copyright -->
+            <div class="border-t border-gray-700 mt-12 pt-8 text-center">
+                <p class="text-gray-400">
+                    © 2024 Knowledge Wave India. All rights reserved. | Designed for professional learning and development.
+                </p>
+            </div>
+        </div>
+    </footer>
+    <!-- @END_COMPONENT: Footer -->
+
+    <!-- JavaScript -->
+    <script>
+        // Scroll Animation Observer
+        (function() {
+            const observerOptions = {
+                threshold: 0.1,
+                rootMargin: '0px 0px -50px 0px'
+            };
+
+            const observer = new IntersectionObserver(function(entries) {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('visible');
+                    }
+                });
+            }, observerOptions);
+
+            document.querySelectorAll('.animate-on-scroll').forEach(el => {
+                observer.observe(el);
+            });
+        })();
+
+        // FAQ Toggle Function
+        function toggleFAQ(button) {
+            const content = button.nextElementSibling;
+            const icon = button.querySelector('i');
+            const isOpen = content.style.maxHeight && content.style.maxHeight !== '0px';
+
+            if (isOpen) {
+                content.style.maxHeight = '0px';
+                icon.classList.remove('fa-minus');
+                icon.classList.add('fa-plus');
+                icon.style.transform = 'rotate(0deg)';
+            } else {
+                content.style.maxHeight = content.scrollHeight + 'px';
+                icon.classList.remove('fa-plus');
+                icon.classList.add('fa-minus');
+                icon.style.transform = 'rotate(180deg)';
+            }
+        }
+
+        // Statistics Counter Animation
+        function animateCounters() {
+            const counters = document.querySelectorAll('[data-count]');
+            counters.forEach(counter => {
+                const target = parseInt(counter.getAttribute('data-count'));
+                const duration = 2000;
+                const increment = target / (duration / 16);
+                let current = 0;
+
+                const timer = setInterval(() => {
+                    current += increment;
+                    if (current >= target) {
+                        current = target;
+                        clearInterval(timer);
+                    }
+                    counter.textContent = Math.floor(current).toLocaleString() + (target >= 1000 ? 'K+' : '+');
+                }, 16);
+            });
+        }
+
+        // Carousel Scroll Function
+        function scrollCarousel(carouselId, scrollAmount) {
+            const carousel = document.getElementById(carouselId);
+            carousel.scrollBy({
+                left: scrollAmount,
+                behavior: 'smooth'
+            });
+        }
+
+        // Smooth Scrolling for Navigation Links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Initialize animations when page loads
+        window.addEventListener('load', function() {
+            // Trigger counter animation when statistics section is visible
+            const statsSection = document.querySelector('[data-count]').closest('section');
+            const statsObserver = new IntersectionObserver(function(entries) {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        animateCounters();
+                        statsObserver.disconnect();
+                    }
+                });
+            });
+            statsObserver.observe(statsSection);
+        });
+
+        // Course Filter Functionality (placeholder)
+        document.querySelectorAll('[data-category]').forEach(button => {
+            button.addEventListener('click', function() {
+                // TODO: Implement course filtering logic
+                const category = this.getAttribute('data-category');
+                
+                // Remove active class from all buttons
+                document.querySelectorAll('[data-category]').forEach(btn => {
+                    btn.classList.remove('bg-primary', 'text-white');
+                    btn.classList.add('bg-white', 'text-gray-600', 'hover:text-primary');
+                });
+                
+                // Add active class to clicked button
+                this.classList.add('bg-primary', 'text-white');
+                this.classList.remove('bg-white', 'text-gray-600', 'hover:text-primary');
+                
+                // Filter course cards (placeholder implementation)
+                const courseCards = document.querySelectorAll('.course-card');
+                courseCards.forEach(card => {
+                    if (category === 'all' || card.getAttribute('data-category') === category) {
+                        card.style.display = 'block';
+                    } else {
+                        card.style.display = 'none';
+                    }
+                });
+            });
+        });
+    </script>
+
+</body>
+</html>

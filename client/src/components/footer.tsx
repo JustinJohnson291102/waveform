@@ -35,7 +35,7 @@ export default function Footer() {
                 <AudioWaveform className="text-white" size={24} />
               </div>
               <span className="text-2xl font-bold">
-                Knowledge<span className="text-blue-400">AudioWaveform</span>
+                Knowledge<span className="text-blue-400">Wave</span>
               </span>
             </div>
             <p className="text-gray-300 mb-6 leading-relaxed">
