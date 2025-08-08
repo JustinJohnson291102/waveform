@@ -9,6 +9,7 @@ import Courses from "@/pages/courses";
 import Packages from "@/pages/packages";
 import Instructors from "@/pages/instructors";
 import Contact from "@/pages/contact";
+import Login from "@/pages/login";
 
 function Router() {
   return (
@@ -19,6 +20,7 @@ function Router() {
       <Route path="/packages" component={Packages} />
       <Route path="/instructors" component={Instructors} />
       <Route path="/contact" component={Contact} />
+      <Route path="/login" component={Login} />
       <Route component={NotFound} />
     </Switch>
   );

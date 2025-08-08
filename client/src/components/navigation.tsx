@@ -109,7 +109,7 @@ export default function Navigation() {
               asChild
               className="bg-blue-600 hover:bg-blue-700 text-white px-6 py-3 rounded-lg font-semibold transition-all duration-300 hover:scale-105 shadow-lg"
             >
-              <a href="#packages">Log In / SignUp</a>
+              <a href="/login">Log In / SignUp</a>
             </Button>
 
             {/* Mobile Menu Toggle */}

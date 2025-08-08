@@ -336,54 +336,30 @@ export default function Contact() {
             </p>
           </div>
 
-          {/* Map Section */}
+          {/* Google Map Section */}
           <div className="animate-on-scroll opacity-0 translate-y-8 transition-all duration-1000 ease-out mb-16">
             <Card className="border-0 shadow-xl overflow-hidden">
               <CardContent className="p-0">
-                <div className="h-96 bg-gradient-to-br from-blue-50 to-cyan-50 flex items-center justify-center relative">
-                  {/* SVG Map Illustration */}
-                  <svg
-                    width="600"
-                    height="400"
-                    viewBox="0 0 600 400"
-                    className="w-full h-full max-w-2xl"
-                  >
-                    {/* Background */}
-                    <rect width="600" height="400" fill="#f0f9ff" />
-                    
-                    {/* India outline (simplified) */}
-                    <path
-                      d="M150 80 L480 80 L480 320 L150 320 Z M200 120 L420 120 L420 280 L200 280 Z"
-                      fill="#e0e7ff"
-                      stroke="#3b82f6"
-                      strokeWidth="2"
-                    />
-                    
-                    {/* Location markers */}
-                    {/* Bangalore */}
-                    <circle cx="350" cy="250" r="8" fill="#ef4444" />
-                    <text x="365" y="255" fontSize="14" fill="#1f2937" fontWeight="bold">Bangalore (HQ)</text>
-                    
-                    {/* Mumbai */}
-                    <circle cx="280" cy="200" r="6" fill="#3b82f6" />
-                    <text x="295" y="205" fontSize="12" fill="#1f2937">Mumbai</text>
-                    
-                    {/* Delhi */}
-                    <circle cx="320" cy="140" r="6" fill="#3b82f6" />
-                    <text x="335" y="145" fontSize="12" fill="#1f2937">Delhi</text>
-                    
-                    {/* Decorative elements */}
-                    <circle cx="100" cy="100" r="20" fill="#dbeafe" opacity="0.6" />
-                    <circle cx="500" cy="320" r="15" fill="#dbeafe" opacity="0.4" />
-                    
-                    {/* Title */}
-                    <text x="300" y="40" fontSize="20" fontWeight="bold" textAnchor="middle" fill="#1f2937">
-                      Knowledge Wave India - Office Locations
-                    </text>
-                  </svg>
+                <div className="h-96 relative">
+                  <iframe
+                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d248849.886539092!2d77.49085452148436!3d12.954280047317063!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bae1670c9b44e6d%3A0xf8dfc3e8517e4fe0!2sBengaluru%2C%20Karnataka!5e0!3m2!1sen!2sin!4v1674660000000!5m2!1sen!2sin"
+                    width="100%"
+                    height="100%"
+                    style={{ border: 0 }}
+                    allowFullScreen
+                    loading="lazy"
+                    referrerPolicy="no-referrer-when-downgrade"
+                    className="rounded-lg"
+                    title="Knowledge Wave India Office Location"
+                  ></iframe>
                   
-                  {/* Interactive overlay */}
-                  <div className="absolute inset-0 bg-gradient-to-t from-white/20 to-transparent pointer-events-none"></div>
+                  {/* Map overlay with company info */}
+                  <div className="absolute top-4 left-4 bg-white/95 backdrop-blur-sm rounded-lg p-4 shadow-lg max-w-xs">
+                    <h3 className="font-bold text-gray-900 mb-2">Knowledge Wave India</h3>
+                    <p className="text-sm text-gray-600 mb-1">Tech Park, Electronic City</p>
+                    <p className="text-sm text-gray-600 mb-2">Bangalore, Karnataka 560100</p>
+                    <p className="text-sm text-blue-600 font-semibold">+91 80 1234 5678</p>
+                  </div>
                 </div>
               </CardContent>
             </Card>
